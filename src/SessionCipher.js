@@ -1,3 +1,5 @@
+const ByteBuffer = require('bytebuffer');
+
 module.exports = function (libsignal = {}, Internal = {}) {
   const util = Internal.util;
 
@@ -18,7 +20,7 @@ module.exports = function (libsignal = {}, Internal = {}) {
         });
     },
     encrypt: function (buffer, encoding) {
-      buffer = dcodeIO.ByteBuffer.wrap(buffer, encoding).toArrayBuffer();
+      buffer = ByteBuffer.wrap(buffer, encoding).toArrayBuffer();
       return Internal.SessionLock.queueJobForNumber(
         this.remoteAddress.toString(),
         function () {
@@ -213,7 +215,7 @@ module.exports = function (libsignal = {}, Internal = {}) {
         );
     },
     decryptWhisperMessage: function (buffer, encoding) {
-      buffer = dcodeIO.ByteBuffer.wrap(buffer, encoding).toArrayBuffer();
+      buffer = ByteBuffer.wrap(buffer, encoding).toArrayBuffer();
       return Internal.SessionLock.queueJobForNumber(
         this.remoteAddress.toString(),
         function () {
@@ -281,7 +283,7 @@ module.exports = function (libsignal = {}, Internal = {}) {
       );
     },
     decryptPreKeyWhisperMessage: function (buffer, encoding) {
-      buffer = dcodeIO.ByteBuffer.wrap(buffer, encoding);
+      buffer = ByteBuffer.wrap(buffer, encoding);
       var version = buffer.readUint8();
       if ((version & 0xf) > 3 || version >> 4 < 3) {
         // min version > 3 or max version < 3

@@ -1,8 +1,10 @@
+const ByteBuffer = require('bytebuffer');
+
 module.exports = function (libsignal = {}, Internal = {}) {
   var VERSION = 0;
 
   function iterateHash(data, key, count) {
-    data = dcodeIO.ByteBuffer.concat([data, key]).toArrayBuffer();
+    data = ByteBuffer.concat([data, key]).toArrayBuffer();
     return Internal.crypto.hash(data).then(function (result) {
       if (--count === 0) {
         return result;
@@ -32,7 +34,7 @@ module.exports = function (libsignal = {}, Internal = {}) {
   }
 
   function getDisplayStringFor(identifier, key, iterations) {
-    var bytes = dcodeIO.ByteBuffer.concat([
+    var bytes = ByteBuffer.concat([
       shortToArrayBuffer(VERSION),
       key,
       identifier,

@@ -2,8 +2,7 @@
   * jobQueue manages multiple queues indexed by device to serialize
   * session io ops on the database.
   */
-;(function() {
-'use strict';
+module.exports = function(libsignal = {}, Internal = {}) {
 
 Internal.SessionLock = {};
 
@@ -20,4 +19,4 @@ Internal.SessionLock.queueJobForNumber = function queueJobForNumber(number, runJ
      return runCurrent;
 };
 
-})();
+};

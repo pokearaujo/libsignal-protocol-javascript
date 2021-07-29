@@ -1,6 +1,5 @@
-(function() {
-    'use strict';
 
+module.exports = function(libsignal = {}, Internal = {}) {
     function validatePrivKey(privKey) {
         if (privKey === undefined || !(privKey instanceof ArrayBuffer) || privKey.byteLength != 32) {
             throw new Error("Invalid private key");
@@ -106,4 +105,4 @@
     libsignal.Curve       = wrapCurve(Internal.Curve);
     libsignal.Curve.async = wrapCurve(Internal.Curve.async);
 
-})();
+};

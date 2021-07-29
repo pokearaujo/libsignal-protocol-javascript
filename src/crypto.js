@@ -2,12 +2,10 @@
  * vim: ts=4:sw=4
  */
 
-var Internal = Internal || {};
+const crypto = require('crypto').webcrypto;
 
-(function() {
-    'use strict';
-
-    var crypto = window.crypto;
+module.exports = function(libsignal = {}, Internal = {}) {
+    const util = Internal.util;
 
     if (!crypto || !crypto.subtle || typeof crypto.getRandomValues !== 'function') {
         throw new Error('WebCrypto not found');
@@ -130,4 +128,4 @@ var Internal = Internal || {};
         }
     };
 
-})();
+};

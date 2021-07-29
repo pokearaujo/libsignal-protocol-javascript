@@ -14,7 +14,7 @@ module.exports = function(libsignal = {}, Internal = {}) {
         return new ByteBuffer.wrap(thing).toString('binary');
     }
 
-    Internal.util = {
+    libsignal.util = {
         toString,
         toArrayBuffer: function(thing) {
             if (thing === undefined) {

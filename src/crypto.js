@@ -5,7 +5,7 @@
 const crypto = require('crypto').webcrypto;
 
 module.exports = function(libsignal = {}, Internal = {}) {
-    const util = Internal.util;
+    const util = libsignal.util;
 
     if (!crypto || !crypto.subtle || typeof crypto.getRandomValues !== 'function') {
         throw new Error('WebCrypto not found');

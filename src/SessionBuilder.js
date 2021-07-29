@@ -1,5 +1,5 @@
 module.exports = function (libsignal = {}, Internal = {}) {
-  const util = Internal.util;
+  const util = libsignal.util;
   
   function SessionBuilder(storage, remoteAddress) {
     this.remoteAddress = remoteAddress;
